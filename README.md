@@ -69,8 +69,12 @@ A PWA-enabled single-page application (SPA) travel handbook designed for offline
 
 ## Deployment
 
-This project is designed for **GitHub Pages**.
-1.  Push to GitHub.
-2.  Go to Settings -> Pages.
-3.  Select the `main` branch and `/` (root) folder.
-4.  Save.
+This project is configured for **GitHub Pages** using GitHub Actions.
+
+1.  **Push to GitHub**: Push your code to a new repository.
+2.  **Enable Pages**:
+    *   Go to **Settings** -> **Pages**.
+    *   Under **Build and deployment** -> **Source**, select **GitHub Actions**.
+    *   (The workflow `Deploy to GitHub Pages` should automatically pick up).
+3.  **Wait**: Go to the **Actions** tab to see the deployment progress.
+4.  **Visit**: Once green, your site will be live at `https://<username>.github.io/<repo-name>/`.
