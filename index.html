@@ -1,114 +1,123 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我們的旅行手冊</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#f3f4f6">
-    <link rel="apple-touch-icon" href="assets/icon.svg">
+    <title>Our Honeymoon Handbook</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans+TC:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Kalam:wght@400;700&family=Noto+Sans+TC:wght@300;400;700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FDF6E3">
+    <link rel="apple-touch-icon" href="assets/icon.svg">
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "paper": "#FFFEFA",
+                        "background": "#FDF6E3",
+                        "tape": "rgba(255, 229, 180, 0.6)",
+                    },
+                    fontFamily: {
+                        "display": ["Kalam", "cursive"],
+                        "handwriting": ["Patrick Hand", "cursive"],
+                        "body": ["Noto Sans TC", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body class="bg-rose-50 text-gray-800 font-sans antialiased selection:bg-rose-200 selection:text-rose-900">
+<body class="bg-background text-gray-700 font-handwriting antialiased overflow-x-hidden">
 
-    <!-- Audio Player (Hidden by default, controlled via JS/CSS) -->
+    <!-- Audio Player -->
     <audio id="bg-music" loop>
         <source src="assets/music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
     </audio>
 
-    <div class="max-w-md mx-auto bg-white min-h-screen shadow-2xl relative pb-20 overflow-hidden">
-
-        <!-- Header -->
-        <header
-            class="relative h-64 bg-gradient-to-br from-rose-300 to-indigo-300 text-white flex flex-col justify-end p-6 overflow-hidden">
-            <!-- Decorative Circles -->
-            <div class="absolute top-[-20%] right-[-10%] w-48 h-48 bg-white opacity-20 rounded-full blur-2xl"></div>
-            <div class="absolute bottom-[10%] left-[-10%] w-32 h-32 bg-rose-100 opacity-20 rounded-full blur-xl"></div>
-
-            <div class="relative z-10 animate-fade-in-up">
-                <p class="font-handwriting text-2xl mb-1 opacity-90">Our Honeymoon</p>
-                <h1 class="text-4xl font-bold mb-2 tracking-tight">Kyoto & Osaka</h1>
-                <p class="text-rose-50 text-sm font-light tracking-widest uppercase">2025.12.21 - 2026.01.03</p>
-            </div>
-        </header>
-
-        <!-- Main Content Area -->
-        <main id="content" class="px-6 prose prose-indigo max-w-none">
-            <!-- Markdown content will be injected here -->
-            <div class="animate-pulse flex space-x-4">
-                <div class="flex-1 space-y-4 py-1">
-                    <div class="h-4 bg-gray-200 rounded w-3/4"></div>
-                    <div class="space-y-2">
-                        <div class="h-4 bg-gray-200 rounded"></div>
-                        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Admin Controls (Hidden by default) -->
-        <div id="admin-controls"
-            class="admin-only fixed bottom-20 right-6 bg-white p-4 rounded-lg shadow-xl border border-indigo-100 z-50 hidden">
-            <h3 class="text-xs font-bold text-gray-400 uppercase mb-2">Leader Controls</h3>
-            <div class="flex items-center space-x-2">
-                <button id="play-btn"
-                    class="bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </button>
-                <button id="pause-btn"
-                    class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-gray-300 transition shadow-sm hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </button>
-                <div class="text-xs text-gray-500">
-                    <span id="music-status">Music Paused</span>
-                </div>
-            </div>
-            <div class="mt-2 pt-2 border-t border-gray-100">
-                <button id="logout-btn" class="text-xs text-red-500 hover:text-red-700">Exit Admin Mode</button>
+    <!-- Fixed Header -->
+    <header
+        class="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md shadow-sm px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <img src="assets/icon.svg" class="w-8 h-8" alt="Logo">
+            <h1 class="font-display text-xl md:text-2xl font-bold text-rose-500 cursor-pointer select-none">Japan
+                Honeymoon 2025</h1>
+        </div>
+        <div class="flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse" title="Online"></div>
+            <div
+                class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 font-bold text-xs border border-rose-200">
+                C&E
             </div>
         </div>
+    </header>
 
-        <!-- Footer / Auth Trigger -->
-        <footer class="mt-12 text-center text-gray-400 text-sm pb-8">
-            <p>&copy; 2025 LoveTravel. Have a nice trip!</p>
-            <div class="mt-4">
-                <span id="auth-trigger" class="cursor-pointer opacity-20 hover:opacity-100 transition">π</span>
-            </div>
-        </footer>
+    <!-- Main Scroll Container -->
+    <main class="h-screen w-full overflow-y-scroll snap-y snap-proximity pt-16">
+        <!-- Content will be injected here by script.js -->
+        <!-- Loading State -->
+        <div class="h-full w-full flex items-center justify-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-rose-500"></div>
+        </div>
+    </main>
 
+    <!-- Admin Floating Action Button (Hidden by default) -->
+    <div id="fab-container" class="fixed bottom-6 right-6 z-50 hidden">
+        <!-- Menu Items -->
+        <div id="fab-menu"
+            class="absolute bottom-0 right-0 mb-20 flex flex-col items-end gap-3 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none">
+
+            <button id="btn-logout"
+                class="flex items-center gap-2 bg-white text-gray-600 px-4 py-2 rounded-full shadow-lg hover:bg-gray-50 transition">
+                <span class="text-sm font-bold">Logout</span>
+                <span class="material-symbols-outlined">logout</span>
+            </button>
+
+            <button id="btn-music"
+                class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-gray-600 shadow-lg hover:bg-gray-50 transition">
+                <span class="material-symbols-outlined">play_arrow</span>
+            </button>
+        </div>
+
+        <!-- Main Button -->
+        <button id="fab-main-btn"
+            class="flex h-16 w-16 items-center justify-center rounded-full bg-rose-500 text-white shadow-xl hover:bg-rose-600 transition-transform duration-300">
+            <span class="material-symbols-outlined text-3xl">tune</span>
+        </button>
     </div>
 
     <!-- Auth Modal -->
-    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white p-6 rounded-lg shadow-2xl w-80">
-            <h2 class="text-lg font-bold mb-4">Leader Access</h2>
+    <div id="auth-modal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60] hidden">
+        <div class="bg-white p-8 rounded-xl shadow-2xl w-80 transform scale-100 transition-transform">
+            <h2 class="font-display text-2xl font-bold mb-4 text-center text-rose-500">Leader Access</h2>
             <input type="password" id="password-input"
-                class="w-full border border-gray-300 p-2 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Enter code...">
-            <div class="flex justify-end space-x-2">
-                <button id="cancel-auth" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">Cancel</button>
+                class="w-full border-2 border-gray-200 p-3 rounded-lg mb-4 focus:outline-none focus:border-rose-400 font-sans text-center tracking-widest"
+                placeholder="Enter Code">
+            <div class="flex justify-between gap-4">
+                <button id="cancel-auth"
+                    class="flex-1 py-2 text-gray-500 hover:bg-gray-100 rounded-lg font-bold">Cancel</button>
                 <button id="submit-auth"
-                    class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Unlock</button>
+                    class="flex-1 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 font-bold shadow-md">Unlock</button>
             </div>
         </div>
     </div>

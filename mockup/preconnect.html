@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tourist Itinerary View</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        :root {
+            --paper-bg: #FCFBF8;
+            --paper-dark-bg: #2d2a26;
+            --text-main: #5C4B44;
+            --text-main-dark: #D4C9C3;
+            --heading: #413531;
+            --heading-dark: #EAE0DB;
+            --accent: #E57373;--accent-light: #FFEBEE;
+        }
+        .markdown-content h2 {
+            @apply text-2xl font-bold mt-8 mb-4 text-[var(--heading)] dark:text-[var(--heading-dark)] font-gaegu;
+        }
+        .markdown-content ul {
+            @apply list-none list-inside space-y-2 mb-4 pl-0;
+        }
+        .markdown-content li {
+            @apply pl-6 relative;
+        }
+        .markdown-content li::before {
+            content: '🌸';
+            @apply absolute left-0 text-[var(--accent)] text-lg;
+        }
+        .markdown-content strong {
+            @apply font-bold text-[var(--heading)] dark:text-[var(--heading-dark)];
+        }
+        .markdown-content blockquote {
+            @apply border-l-4 border-[var(--accent)] pl-4 py-2 my-4 bg-[var(--accent-light)] dark:bg-red-900/20 text-[var(--text-main)] dark:text-[var(--text-main-dark)] rounded-r-lg;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#F4EDE9",
+                        "background-dark": "#1d1917",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "gaegu": ["Gaegu", "cursive"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="font-gaegu bg-background-light dark:bg-background-dark text-[var(--text-main)] dark:text-[var(--text-main-dark)]">
+    <div class="relative flex min-h-screen w-full flex-col group/design-root">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="flex flex-1 justify-center py-5 sm:px-4 md:py-10 md:px-10 lg:px-12">
+                <div
+                    class="layout-content-container flex flex-col w-full max-w-6xl flex-1 bg-[var(--paper-bg)] dark:bg-[var(--paper-dark-bg)] shadow-2xl shadow-black/20 rounded-lg border-2 border-white/50 relative">
+                    <div class="absolute top-4 right-4 text-[var(--accent)]/50">
+                        <span class="material-symbols-outlined text-4xl transform -rotate-12">flight_takeoff</span>
+                    </div>
+                    <div class="absolute bottom-4 left-4 text-[var(--accent)]/50">
+                        <span class="material-symbols-outlined text-5xl transform rotate-6">local_florist</span>
+                    </div>
+                    <header
+                        class="flex items-center justify-between whitespace-nowrap border-b-2 border-dashed border-[var(--accent)]/30 px-6 sm:px-10 py-4 z-10">
+                        <div class="flex items-center gap-4 text-[var(--heading)] dark:text-[var(--heading-dark)]">
+                            <div class="size-8 text-[var(--accent)]">
+                                <span class="material-symbols-outlined !text-4xl">map</span>
+                            </div>
+                            <h2 class="text-2xl font-bold tracking-wide">Our Trip Handbook</h2>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="relative">
+                                <div
+                                    class="flex items-center gap-3 rounded-full bg-white/50 dark:bg-black/20 backdrop-blur-sm shadow-inner px-3 py-2 border border-black/10 dark:border-white/10">
+                                    <div class="flex-1 overflow-hidden hidden sm:block">
+                                        <p
+                                            class="text-[var(--heading)] dark:text-[var(--heading-dark)] text-sm font-bold leading-tight truncate">
+                                            Ambient Journey</p>
+                                    </div>
+                                    <button
+                                        class="flex shrink-0 items-center justify-center rounded-full size-8 bg-[var(--accent)] text-white hover:bg-opacity-80 transition-colors">
+                                        <span class="material-symbols-outlined text-inherit"
+                                            style="font-size: 20px;">play_arrow</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <button
+                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent border-2 border-[var(--accent)] text-[var(--accent)] text-base font-bold leading-normal tracking-[0.015em] hover:bg-[var(--accent-light)] dark:hover:bg-red-900/30 transition-colors">
+                                <span class="truncate">Admin</span>
+                            </button>
+                        </div>
+                    </header>
+                    <main class="flex flex-col flex-1 pb-16 px-6 sm:px-10 font-display">
+                        <div class="flex flex-wrap justify-between gap-3 p-4 mt-8 text-center w-full mx-auto">
+                            <div class="flex flex-col gap-1 w-full">
+                                <p
+                                    class="text-[var(--heading)] dark:text-[var(--heading-dark)] text-5xl md:text-6xl font-bold leading-tight tracking-[-0.033em] font-gaegu">
+                                    Kyoto Adventure</p>
+                                <p
+                                    class="text-[var(--text-main)] dark:text-[var(--text-main-dark)] text-lg font-normal leading-normal font-display">
+                                    A detailed plan for our upcoming trip to the heart of Japan.</p>
+                            </div>
+                        </div>
+                        <div
+                            class="text-[var(--text-main)] dark:text-[var(--text-main-dark)] text-base font-normal leading-relaxed pb-3 pt-1 markdown-content relative lg:grid lg:grid-cols-2 lg:gap-x-16 lg:items-start">
+                            <div
+                                class="absolute hidden lg:block left-1/2 top-0 bottom-0 w-px bg-[var(--accent)]/20 -ml-px">
+                            </div>
+                            <div class="lg:pr-8">
+                                <p class="mb-6">Welcome to your personalized travel handbook. This guide contains our
+                                    full itinerary, including daily activities, important notes, and helpful links.
+                                    Everything is available offline for your convenience.</p>
+                                <h2>Day 1: Arrival in Kyoto</h2>
+                                <ul>
+                                    <li><strong>Morning:</strong> Arrive at Kansai International Airport (KIX). Pick up
+                                        Japan Rail Pass.</li>
+                                    <li><strong>Afternoon:</strong> Take the Haruka Express to Kyoto Station. Check into
+                                        our hotel near Gion.</li>
+                                    <li><strong>Evening:</strong> Welcome dinner at a traditional Izakaya in Pontocho
+                                        Alley.</li>
+                                </ul>
+                                <blockquote>
+                                    <strong>Important Note:</strong> Keep your passport and JR Pass handy at all times.
+                                </blockquote>
+                            </div>
+                            <div class="lg:pl-8">
+                                <h2>Day 2: Temples and Traditions</h2>
+                                <ul>
+                                    <li><strong>Morning:</strong> Visit the iconic Fushimi Inari Shrine with its
+                                        thousands of vermilion torii gates.</li>
+                                    <li><strong>Afternoon:</strong> Explore the serene Arashiyama Bamboo Grove and the
+                                        beautiful Tenryu-ji Temple.</li>
+                                    <li><strong>Evening:</strong> Experience traditional Japanese performing arts at the
+                                        Gion Corner Cultural Show.</li>
+                                </ul>
+                                <h2>Day 3: The Golden Pavilion &amp; Zen Gardens</h2>
+                                <ul>
+                                    <li><strong>Morning:</strong> Visit Kinkaku-ji (The Golden Pavilion), a stunning Zen
+                                        Buddhist temple.</li>
+                                    <li><strong>Afternoon:</strong> Find tranquility at Ryōan-ji Temple, famous for its
+                                        rock garden.</li>
+                                    <li><strong>Evening:</strong> Stroll through the historic Nishiki Market for some
+                                        local food tasting.</li>
+                                </ul>
+                                <blockquote>
+                                    <strong>Tip:</strong> Wear comfortable shoes today as there will be a lot of walking
+                                    on temple grounds.
+                                </blockquote>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
