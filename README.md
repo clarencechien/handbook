@@ -10,7 +10,8 @@ A PWA-enabled single-page application (SPA) travel handbook designed for offline
 *   **Itinerary Visualization**: Includes a responsive itinerary overview image for quick reference.
 *   **Leader Mode**: Hidden admin features (music control, secret notes) accessible via a password.
 *   **Secret Content**: Special "Leader Only" blocks in the itinerary that are hidden from the public view.
-*   **Background Music**: Integrated audio player with a curated playlist and offline download support.
+*   **Background Music**: Integrated audio player with a curated playlist, offline download support, and single-song looping by default.
+*   **Lyrics Display**: Built-in lyrics view with a "Karaoke" fullscreen mode, optimized for both mobile and desktop.
 *   **Responsive Design**: Optimized for mobile devices with a "Scrapbook" look and feel.
 
 ## 🚀 Usage
@@ -50,8 +51,9 @@ A PWA-enabled single-page application (SPA) travel handbook designed for offline
 3.  **Controls**:
     - A Floating Action Button (FAB) will appear in the bottom right.
     - Click the FAB to open the menu.
-    - Control music (Play/Pause, Next/Prev, Repeat).
-    - **Download Music**: Click the download icon to save songs for offline use.
+    - Control music (Play/Pause, Next/Prev).
+    - **Lyrics**: Click "Lyrics" to view song text. Use the "Expand" icon for fullscreen mode.
+    - **Download Music**: Click the download icon to save songs and lyrics for offline use.
     - "Surprise Blocks" (dashed red boxes) in the content will become visible.
 
 ## Customization

@@ -5,9 +5,9 @@
 - **Final Polish**: Ensuring all visual elements (icons, headers, fonts) are consistent and the user experience is smooth.
 
 ## Recent Changes
-*   **Music Player**: Implemented a full-featured music player with a curated playlist (Suno AI), repeat modes, and offline download capability.
-*   **Admin Controls**: Added a Floating Action Button (FAB) menu for music and admin controls, accessible via the "C&E" avatar login.
-*   **Offline Support**: Enhanced Service Worker to cache music files upon user request (Download button).
+*   **Music Player**: Implemented a full-featured music player with local assets (Suno AI), lyrics display, and offline download capability.
+*   **Lyrics Support**: Added synchronized lyrics display with a fullscreen mode. Refined for mobile with responsive typography and improved scrolling in minimized state.
+*   **Offline Support**: Enhanced Service Worker to cache music, images, and lyrics files upon user request (Download button).
 *   **Itinerary Image**: Added `Itinerary2.png` to the handbook introduction with PWA caching support.
 *   **Image Verification**: Verified and updated all day images, using a mix of Unsplash and Wikimedia Commons for reliability.
 *   **Icon**: Updated `assets/icon.svg` to a new "Travel Bag" design.
@@ -19,6 +19,7 @@
 - **Verification**: User to verify the live site on mobile, especially offline music playback.
 
 ## Active Decisions
-- **Music Hosting**: Using Suno.ai CDN for music files but implementing a "Download" feature to cache them locally for offline use, ensuring playback without internet.
+- **Music Hosting**: Switched from Suno.ai CDN to local `assets/music/` hosting to prevent link expiration and ensure reliable offline access.
+- **Lyrics Storage**: Storing lyrics in external `.txt` files for easier management and cleaner code, fetched dynamically.
 - **Login UX**: Moving the login trigger to the "C&E" avatar provides a more intuitive (yet still discreet) entry point for the leader.
 - **Visuals**: The "Travel Agency" aesthetic with tape effects, postcards, and vintage maps is the final design direction.

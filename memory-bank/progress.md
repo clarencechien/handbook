@@ -26,7 +26,10 @@ The PWA Handbook is feature-complete with a "Travel Agency" visual style. It sup
     - [x] Broken Day Images (Fixed with Wikimedia/Unsplash replacements)
 - [x] Content Updates
     - [x] Added Itinerary Overview Image
-    - [x] Updated Music Playlist
+    - [x] Updated Music Playlist (Local Assets)
+    - [x] Added Lyrics Support
+    - [x] Added Fullscreen Lyrics Mode
+    - [x] UI Polish (Responsive Fonts, Scrolling Fixes, Reparenting Logic)
 
 ## Remaining Tasks
 - [ ] Deployment to GitHub Pages (User Action)

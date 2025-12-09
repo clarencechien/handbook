@@ -14,11 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgMusic = document.getElementById('bg-music');
 
     // Playlist UI Elements
-    const btnPrev = document.getElementById('btn-prev');
-    const btnNext = document.getElementById('btn-next');
-    const btnRepeat = document.getElementById('btn-repeat');
-    const btnDownload = document.getElementById('btn-download');
+    // Playlist UI Elements
+    const btnPrev = document.getElementById('prev-btn');
+    const btnNext = document.getElementById('next-btn');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const playIcon = document.getElementById('play-icon');
+    const pauseIcon = document.getElementById('pause-icon');
+    const btnDownload = document.getElementById('download-btn');
     const songTitleDisplay = document.getElementById('song-title');
+
+    // Lyrics UI Elements
+    const lyricsBtn = document.getElementById('lyrics-btn');
+    const lyricsOverlay = document.getElementById('lyrics-overlay');
+    const closeLyricsBtn = document.getElementById('close-lyrics-btn');
+    const expandLyricsBtn = document.getElementById('expand-lyrics-btn');
+    const expandIcon = document.getElementById('expand-icon');
+    const compressIcon = document.getElementById('compress-icon');
+    const lyricsContent = document.getElementById('lyrics-content');
+    let lyricsPlaceholder = null;
 
     const SECRET_CODE = 'love2025'; // Change this!
     const btnEdit = document.getElementById('btn-edit'); // Placeholder
@@ -26,13 +39,221 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Music Playlist Data ---
     const playlist = [
-        { title: "Kyoto no Yakusoku", url: "https://cdn1.suno.ai/091d2f47-99a7-4203-91ea-3b3fc8d01d79.mp3" },
-        { title: "Seiya no Kotae", url: "https://cdn1.suno.ai/94fb9c6e-d8db-40a9-bfe0-3b9eb8634a81.mp3" },
-        { title: "Start of Forever", url: "https://cdn1.suno.ai/a4fe2509-3a8c-4c95-b659-83f19a023546.mp3" },
-        { title: "Jaa ne, Mata ne", url: "https://cdn1.suno.ai/4ec84e40-7e21-4549-bbf1-eb1a26862dbb.mp3" }
+        {
+            title: "Kyoto no Yakusoku",
+            artist: "LoudUkeleles503",
+            src: "assets/music/Kyoto_no_Yakusoku.mp3",
+            cover: "assets/images/Kyoto_no_Yakusoku.jpeg",
+            lyricsSrc: "assets/music/Kyoto_no_Yakusoku.txt"
+        },
+        {
+            title: "Jaa ne, Mata ne",
+            artist: "LoudUkeleles503",
+            src: "assets/music/Jaa_ne,_Mata_ne_(Cover).mp3",
+            cover: "assets/images/Jaa_ne,_Mata_ne_(Cover).jpeg",
+            lyricsSrc: "assets/music/Jaa_ne,_Mata_ne_(Cover).txt"
+        },
+        {
+            title: "Seiya no Kane",
+            artist: "LoudUkeleles503",
+            src: "assets/music/Seiya_no_Kotae.mp3",
+            cover: "assets/images/Seiya_no_Kotae.jpeg",
+            lyricsSrc: "assets/music/Seiya_no_Kotae.txt"
+        },
+        {
+            title: "Start of Forever",
+            artist: "LoudUkeleles503",
+            src: "assets/music/Start_of_Forever_(Cover).mp3",
+            cover: "assets/images/Start_of_Forever_(Cover).jpeg",
+            lyricsSrc: "assets/music/Start_of_Forever_(Cover).txt"
+        }
     ];
     let currentTrackIndex = 0;
-    let repeatMode = 'ALL'; // 'ALL' or 'ONE'
+    let isPlaying = false;
+
+    // --- Music Player Logic ---
+
+    function loadTrack(index) {
+        const track = playlist[index];
+        bgMusic.src = track.src;
+        songTitleDisplay.textContent = track.title;
+
+        // Fetch lyrics from file
+        if (track.lyricsSrc) {
+            fetch(track.lyricsSrc)
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to load lyrics');
+                    return response.text();
+                })
+                .then(text => {
+                    if (lyricsContent) lyricsContent.textContent = text;
+                })
+                .catch(err => {
+                    console.error("Lyrics load failed:", err);
+                    if (lyricsContent) lyricsContent.textContent = "Lyrics not available.";
+                });
+        } else {
+            if (lyricsContent) lyricsContent.textContent = "No lyrics available.";
+        }
+
+        // Preload cover image if needed (browser handles this mostly)
+    }
+
+    function playTrack() {
+        bgMusic.play().then(() => {
+            isPlaying = true;
+            updateMusicUI(true);
+        }).catch(err => console.error("Playback failed:", err));
+    }
+
+    function pauseTrack() {
+        bgMusic.pause();
+        isPlaying = false;
+        updateMusicUI(false);
+    }
+
+    function togglePlay() {
+        if (isPlaying) {
+            pauseTrack();
+        } else {
+            playTrack();
+        }
+    }
+
+    function nextTrack() {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        loadTrack(currentTrackIndex);
+        if (isPlaying) playTrack();
+    }
+
+    function prevTrack() {
+        currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrackIndex);
+        if (isPlaying) playTrack();
+    }
+
+    function updateMusicUI(isPlaying) {
+        // Update Play/Pause Button State
+        if (isPlaying) {
+            playIcon.classList.add('hidden');
+            pauseIcon.classList.remove('hidden');
+        } else {
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+        }
+
+        // Update Title
+        if (songTitleDisplay) {
+            songTitleDisplay.textContent = playlist[currentTrackIndex].title;
+        }
+    }
+
+    function updateRepeatUI() {
+        // Placeholder if we add repeat button back later
+    }
+
+    function toggleLyrics() {
+        lyricsOverlay.classList.toggle('hidden');
+        // Reset fullscreen when closing? Maybe not, keep state.
+    }
+
+    function toggleFullscreenLyrics() {
+        const isFullscreen = lyricsOverlay.classList.contains('fixed');
+
+        if (isFullscreen) {
+            // Exit Fullscreen
+            lyricsOverlay.classList.remove('fixed', 'inset-0', 'z-[9999]', 'rounded-none', 'h-screen', 'w-screen', 'bg-black/90', 'text-white');
+            lyricsOverlay.classList.add('absolute', 'bottom-0', 'left-0', 'w-full', 'h-80', 'rounded-2xl', 'z-50', 'bg-white/95', 'text-gray-700', 'shadow-2xl', 'border', 'border-gray-200');
+
+            expandIcon.classList.remove('hidden');
+            compressIcon.classList.add('hidden');
+
+            lyricsContent.classList.remove('text-2xl', 'leading-loose', 'p-10', 'font-bold', 'text-lg', 'md:text-2xl', 'p-4', 'md:p-10');
+            lyricsContent.classList.add('text-sm', 'text-gray-700');
+
+            // Restore header styling
+            const header = lyricsOverlay.querySelector('div:first-child');
+            if (header) {
+                header.classList.remove('text-white', 'border-gray-700');
+                header.classList.add('text-gray-800', 'border-b');
+            }
+
+            // Move back to original location
+            if (lyricsPlaceholder && lyricsPlaceholder.parentNode) {
+                lyricsPlaceholder.parentNode.insertBefore(lyricsOverlay, lyricsPlaceholder);
+                lyricsPlaceholder.remove();
+                lyricsPlaceholder = null;
+            }
+
+        } else {
+            // Enter Fullscreen
+
+            // Create placeholder and move to body
+            lyricsPlaceholder = document.createComment('lyrics-placeholder');
+            lyricsOverlay.parentNode.insertBefore(lyricsPlaceholder, lyricsOverlay);
+            document.body.appendChild(lyricsOverlay);
+
+            lyricsOverlay.classList.remove('absolute', 'bottom-0', 'left-0', 'w-full', 'h-80', 'rounded-2xl', 'z-50', 'bg-white/95', 'text-gray-700', 'shadow-2xl', 'border', 'border-gray-200');
+            lyricsOverlay.classList.add('fixed', 'inset-0', 'z-[9999]', 'rounded-none', 'h-screen', 'w-screen', 'bg-black/90', 'text-white');
+
+            expandIcon.classList.add('hidden');
+            compressIcon.classList.remove('hidden');
+
+            lyricsContent.classList.remove('text-sm', 'text-gray-700');
+            lyricsContent.classList.add('text-lg', 'md:text-2xl', 'leading-loose', 'p-4', 'md:p-10', 'font-bold');
+
+            // Adjust header for dark mode
+            const header = lyricsOverlay.querySelector('div:first-child');
+            if (header) {
+                header.classList.remove('text-gray-800', 'border-b');
+                header.classList.add('text-white', 'border-gray-700');
+            }
+        }
+    }
+
+    async function downloadMusic() {
+        const cacheName = 'lovetravel-handbook-v2';
+        const iconSpan = btnDownload.querySelector('span');
+        const originalIcon = iconSpan.textContent;
+
+        iconSpan.textContent = '⏳'; // Loading state
+
+        try {
+            const cache = await caches.open(cacheName);
+            const urlsToCache = [];
+
+            playlist.forEach(track => {
+                if (track.src) urlsToCache.push(track.src);
+                if (track.cover) urlsToCache.push(track.cover);
+            });
+
+            // Deduplicate
+            const uniqueUrls = [...new Set(urlsToCache)];
+
+            await cache.addAll(uniqueUrls);
+            alert('Music and images downloaded for offline use! 🎵');
+            iconSpan.textContent = '✅';
+        } catch (error) {
+            console.error('Download failed:', error);
+            alert('Failed to download music. ' + error.message);
+            iconSpan.textContent = originalIcon;
+        }
+    }
+
+    // Event Listeners
+    if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
+    if (btnNext) btnNext.addEventListener('click', nextTrack);
+    if (btnPrev) btnPrev.addEventListener('click', prevTrack);
+    if (lyricsBtn) lyricsBtn.addEventListener('click', toggleLyrics);
+    if (closeLyricsBtn) closeLyricsBtn.addEventListener('click', toggleLyrics);
+    if (expandLyricsBtn) expandLyricsBtn.addEventListener('click', toggleFullscreenLyrics);
+    if (btnDownload) btnDownload.addEventListener('click', downloadMusic);
+
+    // bgMusic.addEventListener('ended', nextTrack); // Removed for single loop default
+    bgMusic.loop = true; // Default to loop
+
+    // Initialize
+    loadTrack(currentTrackIndex);
 
     // Image Mapping for Days (Unsplash Source URLs)
     const dayImages = {
@@ -266,172 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Music Playlist Logic ---
-    // Playlist data defined at top of scope
-
-    function playTrack(index) {
-        if (index < 0 || index >= playlist.length) return;
-
-        // If URL is empty, skip or alert
-        if (!playlist[index].url) {
-            console.log("No URL for track " + index);
-            // Try next one if available and not looping forever on empty
-            return;
-        }
-
-        if (currentTrackIndex !== index || bgMusic.src !== playlist[index].url) {
-            bgMusic.src = playlist[index].url;
-            currentTrackIndex = index;
-        }
-
-        bgMusic.play()
-            .then(() => updateMusicUI(true))
-            .catch(e => console.error("Playback failed", e));
-    }
-
-    function nextTrack() {
-        let nextIndex = currentTrackIndex + 1;
-        if (nextIndex >= playlist.length) {
-            nextIndex = 0; // Loop back to start
-        }
-        playTrack(nextIndex);
-    }
-
-    function prevTrack() {
-        let prevIndex = currentTrackIndex - 1;
-        if (prevIndex < 0) {
-            prevIndex = playlist.length - 1;
-        }
-        playTrack(prevIndex);
-    }
-
-    // Auto-play next track
-    bgMusic.addEventListener('ended', () => {
-        if (repeatMode === 'ONE') {
-            bgMusic.currentTime = 0;
-            bgMusic.play();
-        } else {
-            nextTrack();
-        }
-    });
-
-    // UI Controls
-    // Elements defined at top of scope
-
-    if (btnMusic) {
-        btnMusic.addEventListener('click', () => {
-            if (bgMusic.paused) {
-                // If no src set, play current index
-                if (!bgMusic.src && playlist[currentTrackIndex].url) {
-                    playTrack(currentTrackIndex);
-                } else {
-                    bgMusic.play();
-                    updateMusicUI(true);
-                }
-            } else {
-                bgMusic.pause();
-                updateMusicUI(false);
-            }
-        });
-    }
-
-    if (btnPrev) btnPrev.addEventListener('click', prevTrack);
-    if (btnNext) btnNext.addEventListener('click', nextTrack);
-
-    if (btnRepeat) {
-        btnRepeat.addEventListener('click', () => {
-            repeatMode = repeatMode === 'ALL' ? 'ONE' : 'ALL';
-            updateRepeatUI();
-        });
-    }
-
-    if (btnDownload) {
-        btnDownload.addEventListener('click', async () => {
-            const icon = btnDownload.querySelector('span');
-            if (icon.textContent === 'check_circle') return; // Already downloaded
-
-            icon.textContent = 'downloading';
-            btnDownload.classList.add('animate-pulse', 'text-rose-500');
-
-            try {
-                const cache = await caches.open('lovetravel-handbook-v2');
-                let successCount = 0;
-
-                for (const track of playlist) {
-                    if (track.url) {
-                        try {
-                            // Fetch with no-cors to handle opaque responses if needed, 
-                            // but usually we want cors for audio to play properly? 
-                            // Actually, for cache, we just need the response.
-                            // Suno CDN seems to support CORS.
-                            await cache.add(track.url);
-                            successCount++;
-                        } catch (err) {
-                            console.error(`Failed to cache ${track.title}:`, err);
-                        }
-                    }
-                }
-
-                if (successCount > 0) {
-                    icon.textContent = 'check_circle';
-                    btnDownload.classList.remove('animate-pulse', 'text-gray-400');
-                    btnDownload.classList.add('text-green-500');
-                    setTimeout(() => {
-                        icon.textContent = 'download';
-                        btnDownload.classList.remove('text-green-500');
-                        btnDownload.classList.add('text-gray-400');
-                    }, 3000);
-                    alert(`Successfully downloaded ${successCount} songs for offline use!`);
-                } else {
-                    throw new Error("No songs downloaded");
-                }
-            } catch (error) {
-                console.error("Download failed:", error);
-                icon.textContent = 'error';
-                btnDownload.classList.remove('animate-pulse');
-                btnDownload.classList.add('text-red-500');
-                alert("Failed to download music. Please check your connection.");
-            }
-        });
-    }
-
-    // Logout
-    if (btnLogout) {
-        btnLogout.addEventListener('click', () => {
-            localStorage.removeItem('isLeader');
-            checkAdminStatus();
-            alert("Logged out of Leader Mode");
-        });
-    }
-
-    function updateMusicUI(isPlaying) {
-        if (!btnMusic) return;
-        const icon = btnMusic.querySelector('span');
-        if (isPlaying) {
-            icon.textContent = 'pause';
-            btnMusic.classList.add('bg-rose-100', 'text-rose-600');
-        } else {
-            icon.textContent = 'play_arrow';
-            btnMusic.classList.remove('bg-rose-100', 'text-rose-600');
-        }
-
-        // Update Title
-        if (songTitleDisplay) {
-            songTitleDisplay.textContent = playlist[currentTrackIndex].title;
-        }
-    }
-
-    function updateRepeatUI() {
-        if (!btnRepeat) return;
-        const icon = btnRepeat.querySelector('span');
-        if (repeatMode === 'ONE') {
-            icon.textContent = 'repeat_one';
-            btnRepeat.classList.add('text-rose-600');
-        } else {
-            icon.textContent = 'repeat';
-            btnRepeat.classList.remove('text-rose-600');
-        }
-    }
+    // --- End of Script ---
 
     // Auth Modal Trigger (Hidden Easter Egg)
     // We need a way to trigger auth since the footer might be gone or different.

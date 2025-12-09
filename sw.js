@@ -9,12 +9,19 @@ const ASSETS_TO_CACHE = [
     'https://cdn.tailwindcss.com',
     'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
     './assets/icon.svg',
-    './assets/Itinerary2.png'
-    // Note: assets/music.mp3 and assets/icon.png should be cached if they exist.
-    // We'll try to cache them dynamically or add them here if we are sure they exist.
-    // For now, let's add them to the list, but if they fail, the install might fail.
-    // To be safe, let's NOT add them to the strict install list unless we know they are there.
-    // Instead, we can cache them on fetch.
+    './assets/Itinerary2.png',
+    './assets/music/Kyoto_no_Yakusoku.mp3',
+    './assets/images/Kyoto_no_Yakusoku.jpeg',
+    './assets/music/Kyoto_no_Yakusoku.txt',
+    './assets/music/Seiya_no_Kotae.mp3',
+    './assets/images/Seiya_no_Kotae.jpeg',
+    './assets/music/Seiya_no_Kotae.txt',
+    './assets/music/Start_of_Forever_(Cover).mp3',
+    './assets/images/Start_of_Forever_(Cover).jpeg',
+    './assets/music/Start_of_Forever_(Cover).txt',
+    './assets/music/Jaa_ne,_Mata_ne_(Cover).mp3',
+    './assets/images/Jaa_ne,_Mata_ne_(Cover).jpeg',
+    './assets/music/Jaa_ne,_Mata_ne_(Cover).txt'
 ];
 
 // Install Event: Cache core assets
