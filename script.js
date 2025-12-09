@@ -268,22 +268,68 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTrack(currentTrackIndex);
 
     // Image Mapping for Days (Unsplash Source URLs)
+    // Image Mapping for Days (Dual Mode: Sketch vs Real)
     const dayImages = {
-        'Day 1': 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=2070&auto=format&fit=crop', // Tokyo/Arrival
-        'Day 2': 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop', // Kyoto Streets
-        'Day 3': 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1974&auto=format&fit=crop', // Nara Deer
-        'Day 4': 'https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?q=80&w=1974&auto=format&fit=crop', // Nijo Castle / ROKU
-        'Day 5': 'https://images.unsplash.com/photo-1622987437805-5c6f7c2609d7?q=80&w=2070&auto=format&fit=crop', // Kinkakuji
-        'Day 6': 'https://upload.wikimedia.org/wikipedia/commons/9/9b/Matcha_stone_mill_grinding_tencha_into_powder.jpg', // Uji Matcha (Wikimedia)
-        'Day 7': 'https://images.unsplash.com/photo-1570459027562-4a916cc6113f?q=80&w=1976&auto=format&fit=crop', // Arashiyama Train
-        'Day 8': 'https://upload.wikimedia.org/wikipedia/commons/4/4a/Bamboo_Forest,_Arashiyama,_Kyoto,_Japan.jpg', // Bamboo Grove (Wikimedia)
-        'Day 9': 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Osaka_-_Night_View.jpg', // Osaka Skyline (Wikimedia)
-        'Day 10': 'https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori,_Osaka,_at_night,_November_2016.jpg', // Osaka River/Dotonbori (Wikimedia)
-        'Day 11': 'https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?q=80&w=2084&auto=format&fit=crop', // Night City
-        'Day 12': 'https://images.unsplash.com/photo-1580138051672-325eb98b2749?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Osaka Castle (User Provided)
-        'Day 13': 'https://images.unsplash.com/photo-1533050487297-09b450131914?q=80&w=2070&auto=format&fit=crop', // Shopping/Shrine
-        'Day 14': 'https://images.unsplash.com/photo-1478479405421-ce83c92fb3ba?q=80&w=1974&auto=format&fit=crop', // Airport/Plane
-        'default': 'https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053&auto=format&fit=crop' // Japan General
+        'Day 1': {
+            sketch: 'assets/images/hankbook_img/Day1.jpg',
+            real: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=2070&auto=format&fit=crop'
+        },
+        'Day 2': {
+            sketch: 'assets/images/hankbook_img/Day2.jpg',
+            real: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop'
+        },
+        'Day 3': {
+            sketch: 'assets/images/hankbook_img/Day3.jpg',
+            real: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1974&auto=format&fit=crop'
+        },
+        'Day 4': {
+            sketch: 'assets/images/hankbook_img/Day4.jpg',
+            real: 'https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?q=80&w=1974&auto=format&fit=crop'
+        },
+        'Day 5': {
+            sketch: 'assets/images/hankbook_img/Day5.jpg',
+            real: 'https://images.unsplash.com/photo-1622987437805-5c6f7c2609d7?q=80&w=2070&auto=format&fit=crop'
+        },
+        'Day 6': {
+            sketch: 'assets/images/hankbook_img/Day6.jpg',
+            real: 'https://upload.wikimedia.org/wikipedia/commons/9/9b/Matcha_stone_mill_grinding_tencha_into_powder.jpg'
+        },
+        'Day 7': {
+            sketch: 'assets/images/hankbook_img/Day7.jpg',
+            real: 'https://images.unsplash.com/photo-1570459027562-4a916cc6113f?q=80&w=1976&auto=format&fit=crop'
+        },
+        'Day 8': {
+            sketch: 'assets/images/hankbook_img/Day8.jpg',
+            real: 'https://upload.wikimedia.org/wikipedia/commons/4/4a/Bamboo_Forest,_Arashiyama,_Kyoto,_Japan.jpg'
+        },
+        'Day 9': {
+            sketch: 'assets/images/hankbook_img/Day9.jpg',
+            real: 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Osaka_-_Night_View.jpg'
+        },
+        'Day 10': {
+            sketch: 'assets/images/hankbook_img/Day10.jpg',
+            real: 'https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori,_Osaka,_at_night,_November_2016.jpg'
+        },
+        'Day 11': {
+            sketch: 'assets/images/hankbook_img/Day11.jpg',
+            real: 'https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?q=80&w=2084&auto=format&fit=crop'
+        },
+        'Day 12': {
+            sketch: 'assets/images/hankbook_img/Day12.jpg',
+            real: 'https://images.unsplash.com/photo-1580138051672-325eb98b2749?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        'Day 13': {
+            sketch: 'assets/images/hankbook_img/Day13.jpg',
+            real: 'https://images.unsplash.com/photo-1533050487297-09b450131914?q=80&w=2070&auto=format&fit=crop'
+        },
+        'Day 14': {
+            sketch: 'assets/images/hankbook_img/Day14.jpg',
+            real: 'https://images.unsplash.com/photo-1478479405421-ce83c92fb3ba?q=80&w=1974&auto=format&fit=crop'
+        },
+        'default': {
+            sketch: 'assets/images/hankbook_img/Day1.jpg',
+            real: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053&auto=format&fit=crop'
+        }
     };
 
     // --- 1. Markdown Fetcher & Parser ---
@@ -421,9 +467,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${htmlContent}
                         </div>
                         <div class="mt-8">
-                             <span class="inline-block px-4 py-2 bg-rose-500 text-white text-lg font-handwriting rounded-full shadow-md transform -rotate-2">
+                            <span class="inline-block px-4 py-2 bg-rose-500 text-white text-lg font-handwriting rounded-full shadow-md transform -rotate-2">
                                 Let's Go! ✈️
-                             </span>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -439,11 +485,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         } else {
-            // --- DAY SLIDE STYLE ---
+            // --- DAY SLIDE STYLE (Interactive Image) ---
             // Extract Day Number for Image Logic
             const dayMatch = content.match(/Day\s+(\d+)/);
             const dayNum = dayMatch ? `Day ${dayMatch[1]}` : 'default';
-            const imageUrl = dayImages[dayNum] || dayImages['default'];
+            const imageData = dayImages[dayNum] || dayImages['default'];
 
             section.innerHTML = `
                 <div class="w-full max-w-4xl bg-white p-6 sm:p-10 rounded-lg shadow-xl relative mt-4 mb-20">
@@ -451,9 +497,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="absolute -top-4 -left-6 -rotate-12 h-8 w-32 bg-yellow-100/60 tape-edge-left"></div>
                     <div class="absolute -bottom-5 -right-5 rotate-6 h-8 w-32 bg-yellow-100/60 tape-edge-right"></div>
                     
-                    <!-- Image Header -->
-                    <div class="w-full h-48 sm:h-64 rounded-md bg-cover bg-center bg-no-repeat mb-8 shadow-md transform rotate-1"
-                         style="background-image: url('${imageUrl}');">
+                    <!-- Interactive Image Container -->
+                    <div class="group relative w-full h-48 sm:h-64 mb-8 shadow-md transform rotate-1 cursor-pointer overflow-hidden rounded-md image-toggle-container"
+                         onclick="this.classList.toggle('reveal-active')">
+                         
+                        <!-- Sketch Layer (Default Visible) -->
+                        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out opacity-100 sketch-layer"
+                             style="background-image: url('${imageData.sketch}');">
+                        </div>
+                        
+                        <!-- Real Photo Layer (Default Hidden) -->
+                        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out opacity-0 real-layer"
+                             style="background-image: url('${imageData.real}');">
+                        </div>
+                        
+                        <!-- Tooltip Hint -->
+                        <div class="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            ✨ Click to reveal
+                        </div>
                     </div>
 
                     <!-- Content -->
@@ -466,6 +527,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mainContainer.appendChild(section);
     }
+
+    // Inject Custom Styles for Toggle
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .reveal-active .sketch-layer { opacity: 0 !important; }
+        .reveal-active .real-layer { opacity: 1 !important; }
+    `;
+    document.head.appendChild(style);
 
     // --- 2. Auth & UI Logic ---
     // SECRET_CODE is defined at the top
