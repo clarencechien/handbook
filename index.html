@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我們的旅行手冊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#f3f4f6">
+    <link rel="apple-touch-icon" href="assets/icon.png">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased">
+
+    <!-- Audio Player (Hidden by default, controlled via JS/CSS) -->
+    <audio id="bg-music" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="max-w-3xl mx-auto bg-white min-h-screen shadow-lg relative pb-20">
+        
+        <!-- Header -->
+        <header class="bg-indigo-600 text-white p-6 rounded-b-lg shadow-md mb-6 relative overflow-hidden">
+            <div class="relative z-10">
+                <h1 class="text-3xl font-bold mb-2">LoveTravel Handbook</h1>
+                <p class="text-indigo-100 text-sm">我們的專屬旅程指南</p>
+            </div>
+            <!-- Decorative background circle -->
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500 rounded-full opacity-50"></div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="content" class="px-6 prose prose-indigo max-w-none">
+            <!-- Markdown content will be injected here -->
+            <div class="animate-pulse flex space-x-4">
+                <div class="flex-1 space-y-4 py-1">
+                    <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                    <div class="space-y-2">
+                        <div class="h-4 bg-gray-200 rounded"></div>
+                        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Admin Controls (Hidden by default) -->
+        <div id="admin-controls" class="admin-only fixed bottom-20 right-6 bg-white p-4 rounded-lg shadow-xl border border-indigo-100 z-50 hidden">
+            <h3 class="text-xs font-bold text-gray-400 uppercase mb-2">Leader Controls</h3>
+            <div class="flex items-center space-x-2">
+                <button id="play-btn" class="bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+                <button id="pause-btn" class="bg-gray-200 text-gray-700 p-2 rounded-full hover:bg-gray-300 transition shadow-sm hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+                <div class="text-xs text-gray-500">
+                    <span id="music-status">Music Paused</span>
+                </div>
+            </div>
+            <div class="mt-2 pt-2 border-t border-gray-100">
+                <button id="logout-btn" class="text-xs text-red-500 hover:text-red-700">Exit Admin Mode</button>
+            </div>
+        </div>
+
+        <!-- Footer / Auth Trigger -->
+        <footer class="mt-12 text-center text-gray-400 text-sm pb-8">
+            <p>&copy; 2025 LoveTravel. Have a nice trip!</p>
+            <div class="mt-4">
+                <span id="auth-trigger" class="cursor-pointer opacity-20 hover:opacity-100 transition">π</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-2xl w-80">
+            <h2 class="text-lg font-bold mb-4">Leader Access</h2>
+            <input type="password" id="password-input" class="w-full border border-gray-300 p-2 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter code...">
+            <div class="flex justify-end space-x-2">
+                <button id="cancel-auth" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded">Cancel</button>
+                <button id="submit-auth" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Unlock</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

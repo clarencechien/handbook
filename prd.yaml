@@ -1,0 +1,95 @@
+project_name: "LoveTravel_PWA_Handbook"
+description: >
+  這是一個基於 GitHub Pages 的單頁應用 (SPA) 旅遊手冊。
+  核心功能包含 PWA 離線瀏覽、背景音樂播放、Markdown 內容渲染，
+  以及基於密碼的「管理者(領隊)/使用者(遊客)」視圖切換功能。
+  目標場景為網路不穩的旅遊途中，透過藍芽喇叭播放音樂並查看行程。
+
+tech_stack:
+  frontend: "HTML5, CSS3 (Tailwind CSS CDN), Vanilla JavaScript"
+  content_source: "Markdown (parsed via marked.js)"
+  offline_capability: "Service Worker (Cache API)"
+  hosting: "GitHub Pages"
+
+user_stories:
+  - "作為遊客，打開網頁時背景會自動快取音樂與圖片，以備離線使用。"
+  - "作為遊客，只能看到公開的行程資訊，看不到驚喜安排。"
+  - "作為領隊，輸入密碼後可解鎖「隱藏區塊 (Surprise Blocks)」並控制音樂播放。"
+  - "作為領隊，我可以透過手機藍芽連接喇叭播放氛圍音樂。"
+
+file_structure_requirements:
+  
+  - file: "index.html"
+    description: "主應用程式入口"
+    requirements:
+      - 包含 viewport meta tag 確保手機瀏覽體驗。
+      - 引入 Tailwind CSS (CDN)。
+      - 引入 marked.js (CDN) 用於解析 Markdown。
+      - 建立 <audio> 標籤，設為 loop，來源指向 assets/music.mp3。
+      - 建立「登入/切換身分」的 UI (例如頁尾的隱藏按鈕)。
+      - 建立兩個主要容器：
+        1. #public-content (顯示一般 Markdown 內容)
+        2. #admin-controls (隱藏的音樂控制器與驚喜備註)
+
+  - file: "styles.css"
+    description: "全站樣式與隱藏邏輯"
+    requirements:
+      - 定義 .admin-only class，預設為 display: none。
+      - 設計適合閱讀的排版 (Typography)，類似雜誌質感。
+      - 音樂播放器的控制面板樣式 (Play/Pause/Volume)。
+
+  - file: "script.js"
+    description: "核心邏輯"
+    features:
+      - Markdown Fetcher: 啟動時讀取 'handbook.md' 並渲染到頁面。
+      - Content Filtering: 解析 Markdown 時，尋找特定標記 (如 :::secret) 並將其包裝在 .admin-only 區塊中。
+      - Auth Logic: 監聽特定點擊事件 (Cheat Code) 或輸入框，驗證密碼 (e.g., 'love2025')。
+      - View Toggle: 驗證成功後，將 .admin-only 元素的 display 改為 block，並存入 localStorage。
+      - Service Worker Registration: 註冊 sw.js。
+
+  - file: "sw.js"
+    description: "Service Worker (離線核心)"
+    requirements:
+      - 定義 CACHE_NAME 與版本號。
+      - 定義 ASSETS_TO_CACHE 清單，必須包含：
+        - '/', '/index.html', '/styles.css', '/script.js', '/handbook.md'
+        - '/assets/music.mp3' (Suno 生成的音樂)
+      - 實作 'install' 事件：預先下載上述所有檔案。
+      - 實作 'fetch' 事件：優先讀取快取 (Cache First Strategy)。
+
+  - file: "manifest.json"
+    description: "PWA 設定檔"
+    requirements:
+      - name: "我們的旅行手冊"
+      - display: "standalone" (全螢幕無網址列體驗)
+      - start_url: "."
+      - icons: 定義基本的 icon array。
+
+  - file: "handbook.md"
+    description: "內容來源 (Single Source of Truth)"
+    format_guide: |
+      使用標準 Markdown 語法。
+      特殊語法約定：
+      
+      # 第一天：抵達飯店
+      一般遊客看得到的內容...
+      
+      <!-- SECRET_START -->
+      **【領隊備註】**
+      這裡要拿出生日蛋糕，音樂切換到 BGM 2。
+      <!-- SECRET_END -->
+      
+      # 第二天：遊樂園
+      一般內容...
+
+assets_placeholder:
+  - "/assets/music1.mp3" (使用者需自行放入 Suno 下載的檔案)
+  - "/assets/music2.mp3" (使用者需自行放入 Suno 下載的檔案)
+  - "/assets/music3.mp3" (使用者需自行放入 Suno 下載的檔案)
+  - "/assets/music4.mp3" (使用者需自行放入 Suno 下載的檔案)
+  - "/assets/icon.png"
+
+instructions_for_ai:
+  - 請生成上述所有檔案的完整程式碼。
+  - 在 script.js 中，請實寫一個簡單的 Markdown Parser 邏輯，利用 Regular Expression 將 <!-- SECRET_START --> 到 <!-- SECRET_END --> 之間的內容包進 <div class="admin-only"> 標籤中。
+  - 確保 Service Worker 的快取邏輯正確，這是離線播放音樂的關鍵。
