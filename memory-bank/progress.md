@@ -23,6 +23,10 @@ The PWA Handbook is feature-complete with a "Travel Agency" visual style. It sup
     - [x] Secret Block Markdown Rendering
     - [x] Favicon 404
     - [x] Scroll Snap Jerkiness
+    - [x] Broken Day Images (Fixed with Wikimedia/Unsplash replacements)
+- [x] Content Updates
+    - [x] Added Itinerary Overview Image
+    - [x] Updated Music Playlist
 
 ## Remaining Tasks
 - [ ] Deployment to GitHub Pages (User Action)

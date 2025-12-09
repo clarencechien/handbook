@@ -6,7 +6,8 @@ A PWA-enabled single-page application (SPA) travel handbook designed for offline
 
 *   **Offline Access**: Fully functional PWA that works without an internet connection (after initial load).
 *   **One Day Per Page**: Smooth scrolling layout with a "Travel Agency" aesthetic, featuring vintage maps and postcard-style chapter covers.
-*   **Dynamic Imagery**: Automatically fetches high-quality travel photos from Unsplash based on the itinerary location.
+*   **Dynamic Imagery**: Automatically fetches high-quality travel photos from Unsplash and Wikimedia Commons based on the itinerary location.
+*   **Itinerary Visualization**: Includes a responsive itinerary overview image for quick reference.
 *   **Leader Mode**: Hidden admin features (music control, secret notes) accessible via a password.
 *   **Secret Content**: Special "Leader Only" blocks in the itinerary that are hidden from the public view.
 *   **Background Music**: Integrated audio player with a curated playlist and offline download support.

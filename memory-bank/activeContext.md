@@ -5,12 +5,14 @@
 - **Final Polish**: Ensuring all visual elements (icons, headers, fonts) are consistent and the user experience is smooth.
 
 ## Recent Changes
-- **Music Player**: Implemented a full-featured music player with a curated playlist (Suno AI), repeat modes, and offline download capability.
-- **Admin Controls**: Added a Floating Action Button (FAB) menu for music and admin controls, accessible via the "C&E" avatar login.
-- **Offline Support**: Enhanced Service Worker to cache music files upon user request (Download button).
-- **Icon**: Updated `assets/icon.svg` to a new "Travel Bag" design.
-- **Header**: Redesigned with `Gaegu` font and "Japan Honeymoon 2025" title.
-- **Layout**: Implemented "One Day Per Page" with scroll snap and "Postcard" style chapter covers.
+*   **Music Player**: Implemented a full-featured music player with a curated playlist (Suno AI), repeat modes, and offline download capability.
+*   **Admin Controls**: Added a Floating Action Button (FAB) menu for music and admin controls, accessible via the "C&E" avatar login.
+*   **Offline Support**: Enhanced Service Worker to cache music files upon user request (Download button).
+*   **Itinerary Image**: Added `Itinerary2.png` to the handbook introduction with PWA caching support.
+*   **Image Verification**: Verified and updated all day images, using a mix of Unsplash and Wikimedia Commons for reliability.
+*   **Icon**: Updated `assets/icon.svg` to a new "Travel Bag" design.
+*   **Header**: Redesigned with `Gaegu` font and "Japan Honeymoon 2025" title.
+*   **Layout**: Implemented "One Day Per Page" with scroll snap and "Postcard" style chapter covers.
 
 ## Next Steps
 - **Deployment**: Guide the user to deploy to GitHub Pages.

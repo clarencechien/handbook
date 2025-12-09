@@ -8,6 +8,8 @@
 
 歡迎開啟這趟期待已久的旅程。這份手冊不僅記錄了時間，更包含了每一餐的安排、安心旅遊的保障，以及精準的預算建議。
 
+![Itinerary](assets/Itinerary2.png)
+
 ---
 
 ## 🛡️ 保險與安心旅遊 (Insurance & Safety)

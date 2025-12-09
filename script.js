@@ -41,13 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
         'Day 3': 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1974&auto=format&fit=crop', // Nara Deer
         'Day 4': 'https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?q=80&w=1974&auto=format&fit=crop', // Nijo Castle / ROKU
         'Day 5': 'https://images.unsplash.com/photo-1622987437805-5c6f7c2609d7?q=80&w=2070&auto=format&fit=crop', // Kinkakuji
-        'Day 6': 'https://images.unsplash.com/photo-1595839087662-bc1563204430?q=80&w=2071&auto=format&fit=crop', // Uji Matcha
+        'Day 6': 'https://upload.wikimedia.org/wikipedia/commons/9/9b/Matcha_stone_mill_grinding_tencha_into_powder.jpg', // Uji Matcha (Wikimedia)
         'Day 7': 'https://images.unsplash.com/photo-1570459027562-4a916cc6113f?q=80&w=1976&auto=format&fit=crop', // Arashiyama Train
-        'Day 8': 'https://images.unsplash.com/photo-1528360983277-13d9b152c6d4?q=80&w=2070&auto=format&fit=crop', // Bamboo Grove
-        'Day 9': 'https://images.unsplash.com/photo-1590559899731-a38283959c84?q=80&w=2080&auto=format&fit=crop', // Osaka Skyline
-        'Day 10': 'https://images.unsplash.com/photo-1599052993358-1b2e6e56d492?q=80&w=2070&auto=format&fit=crop', // Osaka River/Dotonbori
+        'Day 8': 'https://upload.wikimedia.org/wikipedia/commons/4/4a/Bamboo_Forest,_Arashiyama,_Kyoto,_Japan.jpg', // Bamboo Grove (Wikimedia)
+        'Day 9': 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Osaka_-_Night_View.jpg', // Osaka Skyline (Wikimedia)
+        'Day 10': 'https://upload.wikimedia.org/wikipedia/commons/4/47/Dotonbori,_Osaka,_at_night,_November_2016.jpg', // Osaka River/Dotonbori (Wikimedia)
         'Day 11': 'https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?q=80&w=2084&auto=format&fit=crop', // Night City
-        'Day 12': 'https://images.unsplash.com/photo-1590253232487-17266f4dd92c?q=80&w=2070&auto=format&fit=crop', // Osaka Castle
+        'Day 12': 'https://images.unsplash.com/photo-1580138051672-325eb98b2749?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Osaka Castle (User Provided)
         'Day 13': 'https://images.unsplash.com/photo-1533050487297-09b450131914?q=80&w=2070&auto=format&fit=crop', // Shopping/Shrine
         'Day 14': 'https://images.unsplash.com/photo-1478479405421-ce83c92fb3ba?q=80&w=1974&auto=format&fit=crop', // Airport/Plane
         'default': 'https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053&auto=format&fit=crop' // Japan General

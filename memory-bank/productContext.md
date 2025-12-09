@@ -17,6 +17,6 @@ To provide a reliable, interactive, and atmosphere-enhancing travel handbook for
 
 ## User Experience Goals
 - **"Magazine" Feel**: Typography and layout should feel like a polished publication, not a raw text file.
-- **Visual Storytelling**: Use a timeline or card-based layout to guide the user through the journey.
+- **Visual Storytelling**: Use a timeline, card-based layout, and itinerary overview images to guide the user through the journey.
 - **Romantic Aesthetic**: Soft colors, elegant typography, and subtle animations to match the honeymoon theme.
 - **Seamless Offline**: The transition to offline should be invisible to the user.
