@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const mainContainer = document.querySelector('main');
-    const authTrigger = document.getElementById('auth-trigger'); // We might need to change how this works
+    // const authTrigger = document.getElementById('auth-trigger'); // Removed
     const authModal = document.getElementById('auth-modal');
     const cancelAuthBtn = document.getElementById('cancel-auth');
     const submitAuthBtn = document.getElementById('submit-auth');
@@ -222,12 +222,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function checkAdminStatus() {
         const isAdmin = localStorage.getItem('isLeader') === 'true';
+        const adminIndicator = document.getElementById('admin-indicator');
+
         if (isAdmin) {
             document.body.classList.add('is-admin');
             fabContainer.classList.remove('hidden');
+            if (adminIndicator) adminIndicator.classList.remove('hidden');
         } else {
             document.body.classList.remove('is-admin');
             fabContainer.classList.add('hidden');
+            if (adminIndicator) adminIndicator.classList.add('hidden');
         }
         updateMusicUI(isAdmin && !bgMusic.paused);
     }
@@ -286,14 +290,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Let's stick to the footer trigger, but we need to ensure it exists in the new layout.
     // Or, we can add a listener to the "Japan Adventure" title in the header.
 
-    // Fallback: Triple click on the top header
-    const topHeader = document.querySelector('header h1');
-    if (topHeader) {
-        topHeader.addEventListener('click', (e) => {
-            if (e.detail === 3) {
-                authModal.classList.remove('hidden');
-                passwordInput.focus();
-            }
+    // Login Trigger: Click on C&E Avatar
+    const loginBtn = document.getElementById('login-btn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', () => {
+            authModal.classList.remove('hidden');
+            passwordInput.focus();
         });
     }
 

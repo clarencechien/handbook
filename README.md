@@ -2,13 +2,25 @@
 
 A PWA-enabled single-page application (SPA) travel handbook designed for offline use. It features background music, markdown content rendering, and a password-protected admin view for the trip leader.
 
-## Features
+## ✨ Features
 
-- **📖 Markdown Content**: Easy-to-edit itinerary using standard Markdown.
-- **🎵 Background Music**: Built-in audio player for creating atmosphere.
-- **📶 Offline Capable**: Full PWA support with Service Worker caching. Works without internet!
-- **👑 Admin Mode**: Hidden controls and "Surprise Blocks" for the trip leader.
-- **📱 Mobile First**: Responsive design optimized for phone screens.
+*   **Offline Access**: Fully functional PWA that works without an internet connection (after initial load).
+*   **One Day Per Page**: Smooth scrolling layout with a "Travel Agency" aesthetic, featuring vintage maps and postcard-style chapter covers.
+*   **Dynamic Imagery**: Automatically fetches high-quality travel photos from Unsplash based on the itinerary location.
+*   **Leader Mode**: Hidden admin features (music control, secret notes) accessible via a password.
+*   **Secret Content**: Special "Leader Only" blocks in the itinerary that are hidden from the public view.
+*   **Background Music**: Integrated audio player for setting the mood.
+*   **Responsive Design**: Optimized for mobile devices with a "Scrapbook" look and feel.
+
+## 🚀 Usage
+
+1.  **Open the App**: Navigate to the deployed URL (or local server).
+2.  **Browse Itinerary**: Scroll through the "Intro" section and then swipe up/down to view each day's plan.
+3.  **Leader Login**:
+    *   Click the **"C&E" Avatar** in the top right corner.
+    *   Enter the secret password (default: `love2025`).
+    *   **Success**: You'll see a "LEADER" indicator, a Floating Action Button (FAB) for controls, and hidden "Leader Only" notes will appear.
+4.  **Music**: Use the FAB or the music toggle in the admin menu to play/pause background music.
 
 ## Setup
 

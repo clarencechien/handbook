@@ -1,15 +1,32 @@
-# Progress
+# Progress Status
+
+## Overview
+The PWA Handbook is feature-complete with a "Travel Agency" visual style. It supports offline access, admin mode, and dynamic content rendering.
 
 ## Status
 - [x] Project Initialization
-- [x] Documentation (AGENTS.md, Implementation Plan)
-- [x] Memory Bank Initialization
-- [x] Core Implementation (HTML, CSS, JS)
-- [x] PWA Implementation (Manifest, SW)
-- [ ] Verification (Local testing pending user confirmation)
+- [x] Core PWA Implementation (Manifest, SW)
+- [x] Basic Markdown Rendering
+- [x] Admin/Secret Mode Logic
+- [x] Visual Redesign (Travel Agency/Scrapbook)
+    - [x] One Day Per Page Layout
+    - [x] Dynamic Unsplash Images
+    - [x] Tape/Sticker Effects
+    - [x] "Travel Folder" Section Covers
+    - [x] "Postcard" Chapter Covers
+- [x] Header Redesign (Gaegu Font, New Title)
+- [x] UX Improvements
+    - [x] "C&E" Avatar Login Trigger
+    - [x] New App Icon
+    - [x] Smooth Scrolling
+- [x] Bug Fixes
+    - [x] Secret Block Markdown Rendering
+    - [x] Favicon 404
+    - [x] Scroll Snap Jerkiness
 
-## What's Left to Build
-- None. All core files are generated.
+## Remaining Tasks
+- [ ] Deployment to GitHub Pages
+- [ ] User to provide `music.mp3`
 
 ## Known Issues
-- `assets/music.mp3` and `assets/icon.png` are placeholders. User needs to provide these files.
+- `music.mp3` is missing (User action required).

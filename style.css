@@ -121,9 +121,14 @@ body {
     border-radius: 0 0.5rem 0.5rem 0;
 }
 
-/* Admin Only Transition */
+/* Admin Only Content */
 .admin-only {
-    transition: all 0.5s ease-in-out;
+    display: none;
+}
+
+body.is-admin .admin-only {
+    display: block;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 /* Mermaid Diagram */
