@@ -7,7 +7,8 @@ const ASSETS_TO_CACHE = [
     './handbook.md',
     './manifest.json',
     'https://cdn.tailwindcss.com',
-    'https://cdn.jsdelivr.net/npm/marked/marked.min.js'
+    'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+    './assets/icon.svg'
     // Note: assets/music.mp3 and assets/icon.png should be cached if they exist.
     // We'll try to cache them dynamically or add them here if we are sure they exist.
     // For now, let's add them to the list, but if they fail, the install might fail.

@@ -4,7 +4,32 @@
 
 親愛的 Clarence 與 Erika：
 
-歡迎開啟這趟期待已久的旅程。這份手冊不僅記錄了時間，更包含了每一餐的安排、安心旅遊的保障，以及精準的預算建議。
+歡迎開啟這趟期待已久的旅程。這份手冊不僅記錄了時間，更包含了每一餐的安排、安心旅遊歡迎來到我們的專屬旅行手冊！這裡記錄了我們接下來幾天的精彩行程。
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffccd5', 'edgeLabelBackground':'#fff', 'tertiaryColor': '#fff'}}}%%
+timeline
+    title 🌸 2025/26 Honeymoon Journey 🌸
+    section Kyoto Promise
+        Day 1 : ✈️ Arrival & Wagyu Dinner
+        Day 2 : ⛩️ Kiyomizu & Kamo River
+        Day 3 : 🦌 Nara Deer Park
+    section Christmas Hideaway
+        Day 4 : 🎄 Nijo Castle & ROKU
+        Day 5 : ✨ Kinkaku & Ginkaku
+        Day 6 : 🍵 Uji Matcha
+    section Arashiyama Vibes
+        Day 7 : 🚂 Romantic Train
+        Day 8 : 🎋 Bamboo Grove
+    section New Year Clouds
+        Day 9 : 🏨 Conrad Osaka
+        Day 10 : 🚢 Aqua Liner
+        Day 11 : 🥂 NYE Countdown
+    section Forever Start
+        Day 12 : 🏯 Osaka Castle
+        Day 13 : 🛍️ Shopping
+        Day 14 : ✈️ Home Sweet Home
+```
 
 ---
 

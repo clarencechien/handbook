@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#4f46e5"/> <!-- Indigo-600 -->
+  
+  <!-- Torii Gate -->
+  <path d="M100 100 h312 v40 h-40 v250 h40 v40 h-80 v-40 h-152 v40 h-80 v-40 h40 v-250 h-40 z" fill="#e11d48"/> <!-- Rose-600 -->
+  <rect x="130" y="160" width="252" height="30" fill="#e11d48"/>
+  
+  <!-- Heart -->
+  <path d="M256 400 C 150 300, 100 250, 100 200 A 60 60 0 0 1 220 200 L 256 240 L 292 200 A 60 60 0 0 1 412 200 C 412 250, 362 300, 256 400 Z" fill="white" opacity="0.9"/>
+  
+  <text x="50%" y="480" text-anchor="middle" fill="white" font-family="sans-serif" font-size="40" font-weight="bold">LoveTravel</text>
+</svg>
