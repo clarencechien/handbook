@@ -1,0 +1,30 @@
+{
+  "name": "handbook",
+  "version": "1.0.0",
+  "description": "A PWA-enabled single-page application (SPA) travel handbook designed for offline use. It features background music, markdown content rendering, and a password-protected admin view for the trip leader.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tailwindcss -i ./src/input.css -o ./style.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./style.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clarencechien/handbook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clarencechien/handbook/issues"
+  },
+  "homepage": "https://github.com/clarencechien/handbook#readme",
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.19",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
+  }
+}

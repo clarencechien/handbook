@@ -248,6 +248,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeLyricsBtn) closeLyricsBtn.addEventListener('click', toggleLyrics);
     if (expandLyricsBtn) expandLyricsBtn.addEventListener('click', toggleFullscreenLyrics);
     if (btnDownload) btnDownload.addEventListener('click', downloadMusic);
+    if (btnLogout) {
+        btnLogout.addEventListener('click', () => {
+            if (confirm('Logout of Leader mode?')) {
+                localStorage.removeItem('isLeader');
+                checkAdminStatus();
+                toggleFullscreenLyrics(); // Reset if open
+                // Hide menu interactions
+                fabMenu.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                fabMainBtn.classList.remove('rotate-45');
+            }
+        });
+    }
 
     // bgMusic.addEventListener('ended', nextTrack); // Removed for single loop default
     bgMusic.loop = true; // Default to loop
@@ -436,8 +448,8 @@ document.addEventListener('DOMContentLoaded', () => {
             section.innerHTML = `
                 <div class="w-full max-w-4xl bg-white p-6 sm:p-10 rounded-lg shadow-xl relative mt-4 mb-20">
                     <!-- Tape Effects -->
-                    <div class="absolute -top-4 -left-6 -rotate-12 h-8 w-32 bg-yellow-100/60 tape-edge-left hidden sm:block"></div>
-                    <div class="absolute -bottom-5 -right-5 rotate-6 h-8 w-32 bg-yellow-100/60 tape-edge-right hidden sm:block"></div>
+                    <div class="absolute -top-4 -left-6 -rotate-12 h-8 w-32 bg-yellow-100/60 tape-edge-left"></div>
+                    <div class="absolute -bottom-5 -right-5 rotate-6 h-8 w-32 bg-yellow-100/60 tape-edge-right"></div>
                     
                     <!-- Image Header -->
                     <div class="w-full h-48 sm:h-64 rounded-md bg-cover bg-center bg-no-repeat mb-8 shadow-md transform rotate-1"

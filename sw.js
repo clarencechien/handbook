@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lovetravel-handbook-v2';
+const CACHE_NAME = 'lovetravel-handbook-v3';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -6,7 +6,6 @@ const ASSETS_TO_CACHE = [
     './script.js',
     './handbook.md',
     './manifest.json',
-    'https://cdn.tailwindcss.com',
     'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
     './assets/icon.svg',
     './assets/Itinerary2.png',
