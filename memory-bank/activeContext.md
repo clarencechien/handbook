@@ -1,22 +1,23 @@
 # Active Context
 
 ## Current Work Focus
-Verification and Deployment Preparation.
-- Core implementation is complete.
-- PWA features are implemented.
-- Verifying functionality and preparing for git commit.
+Visual Redesign and Polish.
+- Redesigning the UI to match the "Itinerary2" aesthetic (Timeline/Card view, Romantic theme).
+- Updating `style.css` and `index.html`.
+- Ensuring the new design is responsive and PWA-ready.
 
 ## Recent Changes
-- Implemented `index.html`, `style.css`, `script.js` with core logic.
-- Implemented `manifest.json` and `sw.js` for PWA capabilities.
-- Created sample `handbook.md`.
+- Generated `icon.svg` and updated manifest.
+- Added Mermaid timeline to `handbook.md`.
 - Updated `README.md` and Memory Bank.
+- Committed initial core features.
 
 ## Next Steps
-1.  Verify locally (User action).
-2.  Commit changes to git.
-3.  Deploy to GitHub Pages (User action).
+1.  Apply visual redesign to `style.css` (Colors, Typography, Layout).
+2.  Update `index.html` (Fonts, Header).
+3.  Verify the new look locally.
+4.  Commit changes.
 
 ## Active Decisions
-- **No Build Tool**: Using Vanilla JS and CDN libraries (Tailwind, marked.js) to keep the project simple and easily editable on GitHub directly if needed.
-- **LocalStorage for Auth**: Storing the "Admin Mode" state in `localStorage` is sufficient for this low-security requirement (preventing spoilers, not protecting sensitive data).
+- **Design Style**: Moving towards a "Timeline" or "Card" based layout with a soft, romantic color palette to enhance the honeymoon vibe.
+- **Fonts**: Will use Google Fonts (Noto Sans TC, maybe a handwritten font) to improve readability and aesthetics.

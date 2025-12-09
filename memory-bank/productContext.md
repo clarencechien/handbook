@@ -10,11 +10,12 @@ To provide a reliable, interactive, and atmosphere-enhancing travel handbook for
 
 ## How it should work
 1.  **Load**: User visits the URL. Service Worker caches everything.
-2.  **View**: User sees the itinerary. Music plays (if allowed/triggered).
+2.  **View**: User sees the itinerary presented in a beautiful, timeline-based visual format.
 3.  **Offline**: User can reload the page in airplane mode and still see everything.
 4.  **Admin**: Leader enters a cheat code/password to reveal hidden blocks (e.g., "Surprise Birthday Cake here") and music controls.
 
 ## User Experience Goals
 - **"Magazine" Feel**: Typography and layout should feel like a polished publication, not a raw text file.
+- **Visual Storytelling**: Use a timeline or card-based layout to guide the user through the journey.
+- **Romantic Aesthetic**: Soft colors, elegant typography, and subtle animations to match the honeymoon theme.
 - **Seamless Offline**: The transition to offline should be invisible to the user.
-- **Wow Factor**: The design and music integration should impress the travelers.

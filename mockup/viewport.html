@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Leader Itinerary with Controls</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&amp;family=Kalam:wght@400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        @layer base {
+      html {
+        font-family: 'Patrick Hand', cursive;
+      }
+    }
+    @layer utilities {
+      .tape-edge-left {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0% 50%, 5% 55%, 2% 60%, 6% 65%, 1% 70%, 4% 75%, 0 80%);
+      }
+      .tape-edge-right {
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 95% 55%, 98% 60%, 94% 65%, 99% 70%, 96% 75%, 100% 80%, 100% 100%, 0 100%);
+      }
+    }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF6B6B",
+                        "background-light": "#FDF6E3",
+                        "background-dark": "#101922",
+                        "surprise-border": "#E53E3E",
+                        "surprise-bg": "rgba(255, 235, 235, 0.7)",
+                        "text-light": "#4A4A4A",
+                        "text-dark": "#F9F9F9",
+                        "subtext-light": "#757575",
+                        "subtext-dark": "#a0aec0",
+                        "border-light": "#D1D5DB",
+                        "border-dark": "#2d3748",
+                        "paper": "#FFFEFA",
+                        "tape": "rgba(255, 229, 180, 0.6)",
+                    },
+                    fontFamily: {
+                        "display": ["Kalam", "cursive"],
+                        "handwriting": ["Patrick Hand", "cursive"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'paper': '0 4px 10px rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="font-handwriting bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+    <div class="relative min-h-screen">
+        <div class="flex flex-col items-center">
+            <header class="sticky top-0 z-30 w-full max-w-6xl">
+                <div class="flex items-center justify-between whitespace-nowrap px-6 py-4 md:px-10">
+                    <div class="flex items-center gap-4">
+                        <div class="size-8 text-text-light/80 dark:text-text-dark">
+                            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                        <h1 class="font-display text-2xl md:text-3xl font-bold tracking-wide">Japan Adventure 2024</h1>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button aria-label="Offline Status"
+                            class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-paper/50 backdrop-blur-sm text-text-light dark:text-text-dark">
+                            <span class="material-symbols-outlined text-2xl">wifi</span>
+                        </button>
+                        <div class="size-10 rounded-full bg-cover bg-center bg-no-repeat ring-2 ring-paper/80"
+                            data-alt="User profile picture"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDA5jAqzskcb0fozXXjLqi50bAKsDURCjc3zM2Dx9627H8G0LY8OvQqpOz7_iFS-yziLmb0x-6w4jHC8t6HnKz5pECRDrqbVqH15V82R5PwuQXycntCfKOulu0RtxjOR8dYIfIQJC7CClvlUUfhifc8XdFkkbhWXWDokFvVX61nzjRWTdKQL3hnLSMZWiHRmnV8fDQ8ZZfnKsBD6_fupciSdzwqP0_iCMKCTniit5izgwiSPRCBv212xxmcD8ZK_opmYWVQGl1ytTuV");'>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main class="w-full max-w-4xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+                <div class="mb-12 text-center">
+                    <h2 class="font-display text-5xl md:text-6xl font-bold leading-tight">Day 1: Arrival in Tokyo</h2>
+                </div>
+                <div class="space-y-12">
+                    <div class="relative bg-paper p-4 sm:p-6 rounded-lg shadow-paper @container">
+                        <div class="absolute -top-4 -left-6 -rotate-12 h-8 w-20 bg-tape tape-edge-left"></div>
+                        <div class="absolute -bottom-5 -right-5 rotate-6 h-8 w-24 bg-tape tape-edge-right"></div>
+                        <div class="flex flex-col items-stretch justify-start gap-4 @lg:flex-row @lg:items-start">
+                            <div class="w-full rounded-md bg-cover bg-center bg-no-repeat aspect-video @lg:w-2/5 @lg:aspect-[4/3] transform -rotate-2"
+                                data-alt="Narita airport arrivals hall with people walking"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9VvelNzJgZpAtvc4x0QM2lWXRPlOI3XqbfOZ3kMdfZbmgsZsyk00iIW6RcjExqcDuYGsXlf3IoNUChrD_1ij4IfFjT7Py2K29SGS4lAs1r6_luQDrcfHTmiRMyJNykOw407b_Ds0q9tVXl5yvsp4z5DKiPjHoIUH34BQqlghPMnE484sb_r6j-iG3ETqapD6t_LH9-H_XKD9K7EAMuS2pt9f0iiSP7YkB-_6nFxeGXc4XAJjvyQNyzs6ARoJkCT3xJBj1TBccB0qY");'>
+                            </div>
+                            <div
+                                class="flex w-full min-w-72 grow flex-col items-start justify-center gap-1 py-2 @lg:pl-4">
+                                <p
+                                    class="text-sm font-bold uppercase tracking-widest text-subtext-light dark:text-subtext-dark">
+                                    EVENT</p>
+                                <p class="font-display text-2xl font-bold leading-tight text-text-light">10:00 AM -
+                                    Narita Airport Arrival</p>
+                                <div class="flex flex-col gap-2 mt-2 text-lg">
+                                    <p class="leading-relaxed text-subtext-light dark:text-subtext-dark">
+                                        Welcome to Japan! Clear customs and immigration, pick up your luggage, and look
+                                        for the guide holding a 'Japan Adventure' sign.
+                                    </p>
+                                    <p class="leading-relaxed text-subtext-light dark:text-subtext-dark"><span
+                                            class="font-bold text-text-light">Location:</span> Narita International
+                                        Airport (NRT)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative my-16 mx-auto max-w-2xl transform -rotate-1">
+                        <div
+                            class="flex flex-col items-center gap-4 rounded-md border-2 border-dashed border-surprise-border bg-surprise-bg px-6 py-8 text-center">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 h-6 w-28 bg-tape transform rotate-2">
+                            </div>
+                            <p class="font-display text-2xl font-bold text-red-700">SURPRISE: Tickets for Ghibli Museum
+                            </p>
+                            <p class="text-base leading-relaxed text-text-light">
+                                Details: We have secured tickets for the 4 PM slot tomorrow. Do not mention this to the
+                                group until tomorrow morning's briefing. Keep the tickets safe.
+                            </p>
+                            <button
+                                class="mt-2 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-5 bg-paper/80 text-text-light text-base font-bold tracking-wide shadow-sm hover:bg-paper transition-colors">
+                                <span class="truncate">View Ticket Details</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative bg-paper p-4 sm:p-6 rounded-lg shadow-paper @container">
+                        <div class="absolute -top-4 -right-6 rotate-12 h-8 w-20 bg-tape tape-edge-right"></div>
+                        <div class="flex flex-col items-stretch justify-start gap-4 @lg:flex-row @lg:items-start">
+                            <div class="w-full rounded-md bg-cover bg-center bg-no-repeat aspect-video @lg:w-2/5 @lg:aspect-[4/3] transform rotate-2 @lg:order-2"
+                                data-alt="Modern hotel lobby with comfortable seating areas"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDT5NRCsDcCtgTpmJWieScWvlHcsdHhP8ZSkwANUn4eTwrdlLveP06a0hSwpVfttzuwTnEpOd7tJVmMR0WB0Ba2WiDPIUuVoUduLuUBGVwreIMi9ZFN9MjVo3jKHDQURJnN71d-mjOT1FRemYAhQboYNGSOnBoaZthc9y1koMfNVPIY0iHBmPzhxBLPePjMSoHLeP2drlMGWeBEdNo1CV419qN1cAYPoaSXgOJ_PN5iQ6k4kExkA_bGOM98N6Qyn-78XOu6VS1W4s1a");'>
+                            </div>
+                            <div
+                                class="flex w-full min-w-72 grow flex-col items-start justify-center gap-1 py-2 @lg:pr-4 @lg:order-1">
+                                <p
+                                    class="text-sm font-bold uppercase tracking-widest text-subtext-light dark:text-subtext-dark">
+                                    EVENT</p>
+                                <p class="font-display text-2xl font-bold leading-tight text-text-light">1:00 PM - Hotel
+                                    Check-in</p>
+                                <div class="flex flex-col gap-2 mt-2 text-lg">
+                                    <p class="leading-relaxed text-subtext-light dark:text-subtext-dark">
+                                        Transfer to our hotel in Shinjuku. You'll have some time to settle in and
+                                        freshen up before our first group activity.
+                                    </p>
+                                    <p class="leading-relaxed text-subtext-light dark:text-subtext-dark"><span
+                                            class="font-bold text-text-light">Location:</span> Park Hyatt Tokyo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div class="fixed bottom-6 right-6 z-40 group">
+            <div
+                class="absolute bottom-0 right-0 flex flex-col items-center gap-3 transition-all duration-300 ease-in-out opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:-translate-y-20">
+                <button aria-label="Logout"
+                    class="flex h-12 w-12 items-center justify-center rounded-full bg-paper shadow-lg text-text-light/80 hover:bg-gray-100 dark:bg-border-dark dark:text-text-dark">
+                    <span class="material-symbols-outlined">logout</span>
+                </button>
+                <button aria-label="View as Tourist"
+                    class="flex h-12 w-12 items-center justify-center rounded-full bg-paper shadow-lg text-text-light/80 hover:bg-gray-100 dark:bg-border-dark dark:text-text-dark">
+                    <span class="material-symbols-outlined">visibility</span>
+                </button>
+                <button aria-label="Edit Itinerary"
+                    class="flex h-12 w-12 items-center justify-center rounded-full bg-paper shadow-lg text-text-light/80 hover:bg-gray-100 dark:bg-border-dark dark:text-text-dark">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button aria-label="Play/Pause Music"
+                    class="flex h-12 w-12 items-center justify-center rounded-full bg-paper shadow-lg text-text-light/80 hover:bg-gray-100 dark:bg-border-dark dark:text-text-dark">
+                    <span class="material-symbols-outlined">play_arrow</span>
+                </button>
+            </div>
+            <button aria-label="Leader Controls"
+                class="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-xl transition-transform duration-300 ease-in-out group-hover:rotate-45">
+                <span class="material-symbols-outlined text-3xl">tune</span>
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>
