@@ -9,7 +9,7 @@ A PWA-enabled single-page application (SPA) travel handbook designed for offline
 *   **Dynamic Imagery**: Automatically fetches high-quality travel photos from Unsplash based on the itinerary location.
 *   **Leader Mode**: Hidden admin features (music control, secret notes) accessible via a password.
 *   **Secret Content**: Special "Leader Only" blocks in the itinerary that are hidden from the public view.
-*   **Background Music**: Integrated audio player for setting the mood.
+*   **Background Music**: Integrated audio player with a curated playlist and offline download support.
 *   **Responsive Design**: Optimized for mobile devices with a "Scrapbook" look and feel.
 
 ## 🚀 Usage
@@ -20,7 +20,9 @@ A PWA-enabled single-page application (SPA) travel handbook designed for offline
     *   Click the **"C&E" Avatar** in the top right corner.
     *   Enter the secret password (default: `love2025`).
     *   **Success**: You'll see a "LEADER" indicator, a Floating Action Button (FAB) for controls, and hidden "Leader Only" notes will appear.
-4.  **Music**: Use the FAB or the music toggle in the admin menu to play/pause background music.
+4.  **Music**:
+    *   Use the FAB menu to access music controls.
+    *   **Offline Mode**: Click the "Download" button in the music player to cache all songs for offline playback.
 
 ## Setup
 
@@ -28,10 +30,7 @@ A PWA-enabled single-page application (SPA) travel handbook designed for offline
     ```bash
     git clone <repository-url>
     ```
-2.  **Add Assets**:
-    - Place your background music file at `assets/music.mp3`.
-    - Place your app icon at `assets/icon.png`.
-3.  **Run Locally**:
+2.  **Run Locally**:
     - You need a local server because of Service Worker and CORS restrictions.
     - Python: `python3 -m http.server`
     - Node: `npx http-server`
@@ -45,12 +44,13 @@ A PWA-enabled single-page application (SPA) travel handbook designed for offline
 - Enjoy the music (if played by the leader).
 
 ### For Leaders (Admin Mode)
-1.  Scroll to the bottom of the page.
-2.  Click the small **π** symbol in the footer.
-3.  Enter the secret code: `love2025`.
-4.  **Controls**:
-    - You will see "Leader Controls" floating at the bottom right.
-    - Use the Play/Pause buttons to control music.
+1.  Click the **"C&E" Avatar** in the header.
+2.  Enter the secret code: `love2025`.
+3.  **Controls**:
+    - A Floating Action Button (FAB) will appear in the bottom right.
+    - Click the FAB to open the menu.
+    - Control music (Play/Pause, Next/Prev, Repeat).
+    - **Download Music**: Click the download icon to save songs for offline use.
     - "Surprise Blocks" (dashed red boxes) in the content will become visible.
 
 ## Customization

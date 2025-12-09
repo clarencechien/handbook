@@ -6,7 +6,8 @@
 - **Client-Side Rendering**: Markdown is fetched raw and parsed in the browser using `marked.js`.
 
 ## Key Technical Decisions
-- **Cache-First Strategy**: The Service Worker will aggressively cache all assets defined in the manifest and the `ASSETS_TO_CACHE` list. Network is only used if cache fails (or for updates, depending on specific strategy - initially Cache First).
+- **Cache-First Strategy**: The Service Worker will aggressively cache all assets defined in the manifest and the `ASSETS_TO_CACHE` list. Network is only used if cache fails.
+- **Offline Music**: Music files are NOT cached by default to save bandwidth. A specific "Download" button triggers a script to fetch and cache all playlist URLs into the Service Worker cache (`caches.open`).
 - **Class-Based Visibility**: Admin content is hidden using a CSS class `.admin-only` (display: none). JS toggles this class based on authentication state.
 - **DOM Injection**: The parsed Markdown HTML is injected into specific containers (`#public-content`).
 

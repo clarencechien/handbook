@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lovetravel-handbook-v1';
+const CACHE_NAME = 'lovetravel-handbook-v2';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',

@@ -5,17 +5,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelAuthBtn = document.getElementById('cancel-auth');
     const submitAuthBtn = document.getElementById('submit-auth');
     const passwordInput = document.getElementById('password-input');
-    const logoutBtn = document.getElementById('logout-btn'); // Need to re-bind this
-    const bgMusic = document.getElementById('bg-music');
-
-    // Floating Action Button (FAB) Logic
+    const adminControls = document.getElementById('admin-controls'); // Footer trigger (hidden)
     const fabContainer = document.getElementById('fab-container');
     const fabMainBtn = document.getElementById('fab-main-btn');
     const fabMenu = document.getElementById('fab-menu');
+    const btnLogout = document.getElementById('btn-logout');
     const btnMusic = document.getElementById('btn-music');
+    const bgMusic = document.getElementById('bg-music');
+
+    // Playlist UI Elements
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const btnRepeat = document.getElementById('btn-repeat');
+    const btnDownload = document.getElementById('btn-download');
+    const songTitleDisplay = document.getElementById('song-title');
+
+    const SECRET_CODE = 'love2025'; // Change this!
     const btnEdit = document.getElementById('btn-edit'); // Placeholder
     const btnView = document.getElementById('btn-view'); // Placeholder
-    const btnLogout = document.getElementById('btn-logout');
+
+    // --- Music Playlist Data ---
+    const playlist = [
+        { title: "Kyoto no Yakusoku", url: "https://cdn1.suno.ai/091d2f47-99a7-4203-91ea-3b3fc8d01d79.mp3" },
+        { title: "Seiya no Kotae", url: "https://cdn1.suno.ai/94fb9c6e-d8db-40a9-bfe0-3b9eb8634a81.mp3" },
+        { title: "Start of Forever", url: "https://cdn1.suno.ai/a4fe2509-3a8c-4c95-b659-83f19a023546.mp3" },
+        { title: "Jaa ne, Mata ne", url: "https://cdn1.suno.ai/4ec84e40-7e21-4549-bbf1-eb1a26862dbb.mp3" }
+    ];
+    let currentTrackIndex = 0;
+    let repeatMode = 'ALL'; // 'ALL' or 'ONE'
 
     // Image Mapping for Days (Unsplash Source URLs)
     const dayImages = {
@@ -218,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. Auth & UI Logic ---
-    const SECRET_CODE = 'love2025';
+    // SECRET_CODE is defined at the top
 
     function checkAdminStatus() {
         const isAdmin = localStorage.getItem('isLeader') === 'true';
@@ -249,15 +266,131 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Music Toggle
+    // --- Music Playlist Logic ---
+    // Playlist data defined at top of scope
+
+    function playTrack(index) {
+        if (index < 0 || index >= playlist.length) return;
+
+        // If URL is empty, skip or alert
+        if (!playlist[index].url) {
+            console.log("No URL for track " + index);
+            // Try next one if available and not looping forever on empty
+            return;
+        }
+
+        if (currentTrackIndex !== index || bgMusic.src !== playlist[index].url) {
+            bgMusic.src = playlist[index].url;
+            currentTrackIndex = index;
+        }
+
+        bgMusic.play()
+            .then(() => updateMusicUI(true))
+            .catch(e => console.error("Playback failed", e));
+    }
+
+    function nextTrack() {
+        let nextIndex = currentTrackIndex + 1;
+        if (nextIndex >= playlist.length) {
+            nextIndex = 0; // Loop back to start
+        }
+        playTrack(nextIndex);
+    }
+
+    function prevTrack() {
+        let prevIndex = currentTrackIndex - 1;
+        if (prevIndex < 0) {
+            prevIndex = playlist.length - 1;
+        }
+        playTrack(prevIndex);
+    }
+
+    // Auto-play next track
+    bgMusic.addEventListener('ended', () => {
+        if (repeatMode === 'ONE') {
+            bgMusic.currentTime = 0;
+            bgMusic.play();
+        } else {
+            nextTrack();
+        }
+    });
+
+    // UI Controls
+    // Elements defined at top of scope
+
     if (btnMusic) {
         btnMusic.addEventListener('click', () => {
             if (bgMusic.paused) {
-                bgMusic.play();
-                updateMusicUI(true);
+                // If no src set, play current index
+                if (!bgMusic.src && playlist[currentTrackIndex].url) {
+                    playTrack(currentTrackIndex);
+                } else {
+                    bgMusic.play();
+                    updateMusicUI(true);
+                }
             } else {
                 bgMusic.pause();
                 updateMusicUI(false);
+            }
+        });
+    }
+
+    if (btnPrev) btnPrev.addEventListener('click', prevTrack);
+    if (btnNext) btnNext.addEventListener('click', nextTrack);
+
+    if (btnRepeat) {
+        btnRepeat.addEventListener('click', () => {
+            repeatMode = repeatMode === 'ALL' ? 'ONE' : 'ALL';
+            updateRepeatUI();
+        });
+    }
+
+    if (btnDownload) {
+        btnDownload.addEventListener('click', async () => {
+            const icon = btnDownload.querySelector('span');
+            if (icon.textContent === 'check_circle') return; // Already downloaded
+
+            icon.textContent = 'downloading';
+            btnDownload.classList.add('animate-pulse', 'text-rose-500');
+
+            try {
+                const cache = await caches.open('lovetravel-handbook-v2');
+                let successCount = 0;
+
+                for (const track of playlist) {
+                    if (track.url) {
+                        try {
+                            // Fetch with no-cors to handle opaque responses if needed, 
+                            // but usually we want cors for audio to play properly? 
+                            // Actually, for cache, we just need the response.
+                            // Suno CDN seems to support CORS.
+                            await cache.add(track.url);
+                            successCount++;
+                        } catch (err) {
+                            console.error(`Failed to cache ${track.title}:`, err);
+                        }
+                    }
+                }
+
+                if (successCount > 0) {
+                    icon.textContent = 'check_circle';
+                    btnDownload.classList.remove('animate-pulse', 'text-gray-400');
+                    btnDownload.classList.add('text-green-500');
+                    setTimeout(() => {
+                        icon.textContent = 'download';
+                        btnDownload.classList.remove('text-green-500');
+                        btnDownload.classList.add('text-gray-400');
+                    }, 3000);
+                    alert(`Successfully downloaded ${successCount} songs for offline use!`);
+                } else {
+                    throw new Error("No songs downloaded");
+                }
+            } catch (error) {
+                console.error("Download failed:", error);
+                icon.textContent = 'error';
+                btnDownload.classList.remove('animate-pulse');
+                btnDownload.classList.add('text-red-500');
+                alert("Failed to download music. Please check your connection.");
             }
         });
     }
@@ -280,6 +413,23 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             icon.textContent = 'play_arrow';
             btnMusic.classList.remove('bg-rose-100', 'text-rose-600');
+        }
+
+        // Update Title
+        if (songTitleDisplay) {
+            songTitleDisplay.textContent = playlist[currentTrackIndex].title;
+        }
+    }
+
+    function updateRepeatUI() {
+        if (!btnRepeat) return;
+        const icon = btnRepeat.querySelector('span');
+        if (repeatMode === 'ONE') {
+            icon.textContent = 'repeat_one';
+            btnRepeat.classList.add('text-rose-600');
+        } else {
+            icon.textContent = 'repeat';
+            btnRepeat.classList.remove('text-rose-600');
         }
     }
 

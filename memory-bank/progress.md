@@ -25,8 +25,8 @@ The PWA Handbook is feature-complete with a "Travel Agency" visual style. It sup
     - [x] Scroll Snap Jerkiness
 
 ## Remaining Tasks
-- [ ] Deployment to GitHub Pages
-- [ ] User to provide `music.mp3`
+- [ ] Deployment to GitHub Pages (User Action)
+- [ ] Final Verification on Mobile Device
 
 ## Known Issues
-- `music.mp3` is missing (User action required).
+- None. All major features (Offline, Music, Admin) are implemented.

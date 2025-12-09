@@ -12,7 +12,8 @@ To provide a reliable, interactive, and atmosphere-enhancing travel handbook for
 1.  **Load**: User visits the URL. Service Worker caches everything.
 2.  **View**: User sees the itinerary presented in a beautiful, timeline-based visual format.
 3.  **Offline**: User can reload the page in airplane mode and still see everything.
-4.  **Admin**: Leader enters a cheat code/password to reveal hidden blocks (e.g., "Surprise Birthday Cake here") and music controls.
+4.  **Admin**: Leader clicks the "C&E" avatar and enters a password to reveal hidden blocks and music controls.
+5.  **Music**: Leader can play background music from a curated playlist. A "Download" button allows caching these songs for offline playback.
 
 ## User Experience Goals
 - **"Magazine" Feel**: Typography and layout should feel like a polished publication, not a raw text file.

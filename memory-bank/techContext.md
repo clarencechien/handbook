@@ -14,7 +14,8 @@
 ## Technical Constraints
 - **GitHub Pages**: Static hosting only. No backend.
 - **Browser Compatibility**: Must work on modern mobile browsers (iOS Safari, Android Chrome).
-- **Assets**: Audio files must be hosted with the project or accessible via CORS.
+- **Assets**: Audio files are hosted on Suno.ai CDN and cached locally via the Service Worker for offline access.
+- **CORS**: Suno CDN supports CORS, allowing `fetch` requests for caching.
 
 ## Dependencies
 - Tailwind CSS (CDN)
