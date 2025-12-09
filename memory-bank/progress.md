@@ -30,10 +30,11 @@ The PWA Handbook is feature-complete with a "Travel Agency" visual style. It sup
     - [x] Added Lyrics Support
     - [x] Added Fullscreen Lyrics Mode
     - [x] UI Polish (Responsive Fonts, Scrolling Fixes, Reparenting Logic)
+    - [x] Deployment Setup (GitHub Actions, Path Verification)
 
 ## Remaining Tasks
-- [ ] Deployment to GitHub Pages (User Action)
-- [ ] Final Verification on Mobile Device
+- [ ] **User Action**: Push to GitHub to trigger deployment.
+- [ ] **User Action**: Verify live URL on mobile.
 
 ## Known Issues
-- None. All major features (Offline, Music, Admin) are implemented.
+- None. System is fully verified.
